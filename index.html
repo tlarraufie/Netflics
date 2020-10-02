@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflics</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Liste des Films</h1>
+
+    <div id="data" class="container">
+
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        function details(id){
+
+            var apiUrlDetails = `http://netflics.com/api/films/${id}`;
+
+            console.log(apiUrlDetails);
+
+            fetch(apiUrlDetails).then(response => {
+            }).then(data => {
+                for (var object in data) {    
+                console.log(data[object]["name"]);
+            }
+                return data;
+            }).catch(err => {
+            
+            });
+                
+        }
+
+        var apiUrl = 'http://netflics.com/api/films';
+        fetch(apiUrl).then(response => {
+          return response.json();
+        }).then(data => {
+          // Work with JSON data here
+
+            for (var film in data) {    
+                //console.log(`${object}: ${data[object]}`) 
+                document.getElementById("data")
+                    .innerHTML+=
+                    `
+                    <div class="item">
+                        <img src="${data[film]["affiche"]}" alt="affiche"><br>
+                        <p>${data[film]["titre"]}<p><br>
+                    </div>`;     
+                // <button  onClick=details(${data[object]["id"]})>details</button>
+                // console.log(data[object]["name"]);
+                // console.log(data[object]["tribe"]);
+
+            }
+            return resultat;
+            }).catch(err => {
+          // Do something for an error here
+        });
+    </script>
+
+</body>
+</html>

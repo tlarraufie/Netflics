@@ -1,0 +1,14 @@
+.item{
+    background-color: hsl(240,50%,80%);
+    border: solid black 2px;
+}
+
+.item img{
+    width: 200px;
+    height: auto;
+}   
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
