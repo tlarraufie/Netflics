@@ -1,14 +1,187 @@
-.item{
-    background-color: hsl(240,50%,80%);
-    border: solid black 2px;
+/* 
+    ------------PAGE STYLE---------------- 
+*/
+
+*{
+    margin:0px;
+  }
+  
+  body{
+    font-family:sans-serif;
+    line-height:2rem;
+    background-color:hsl(240,20%,15%);
+    color:white;
+  }
+
+ul{
+    list-style:none;
+}
+a{
+    text-decoration:none;
 }
 
-.item img{
-    width: 200px;
-    height: auto;
-}   
+/* 
+    ----------END PAGE STYLE----------------
+#
+#
+#
+#
+#
+   ------------HEADER STYLE------------------
+*/
 
-.container{
-    display: flex;
-    flex-direction: row;
+#header{
+    background:hsl(0,78%,55%);
+    box-shadow: 5px 5px 10px 5px hsl(0,10%,10%);
+
+    width:100%;
+    z-index:1;
+    position:fixed;
+    top:0px;
+
+    padding:1rem 0 1rem 0 ;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
 }
+
+#title{
+    margin-left:3rem;
+}
+
+nav#navbar-top{
+    margin-right:3rem;
+}
+
+nav#navbar-top ul{
+	display:flex;
+}
+
+nav#navbar-top ul li{
+  margin-left:2rem;
+  
+}
+
+nav#navbar-top ul li a{
+	color:white;
+}
+
+
+/* 
+    ----------END HEADER STYLE----------------
+#
+#
+#
+#
+#
+   ------------MENU LEFT STYLE------------------
+*/
+  
+#navbar-left{
+    position:fixed; 
+    margin-top:5rem;
+    left:0px;
+    width:300px;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    border-right:3px solid white;
+    margin-right:300px;
+    padding:15px;
+  }
+  
+  #navbar-left #header-title{
+    font-size:1.2rem;
+    padding:10px;
+    margin:0 auto;
+    
+  }
+  
+  #navbar-left ul{  
+    list-style:none;
+    
+  }
+  
+  #navbar-left ul li{
+    padding:10px;
+    margin-left:-2rem;
+    border-bottom:1px solid white;
+    position:relative;
+    width:100%; 
+  }
+  
+  #navbar-left ul li a{
+    text-decoration:none;
+    color:white;
+    display:block;
+  }
+
+
+
+  input#search-bar{
+    margin-top:2rem;
+    height: 45px;
+    padding: 0 20px;
+    font-size: 1rem;
+    border: 1px solid #D0CFCE;
+    border-radius: 10px;;
+    outline: none;
+    
+   }
+
+
+
+/* 
+    ----------END MENU LEFT STYLE----------------
+#
+#
+#
+#
+#
+   ------------MAIN STYLE---------------------
+*/
+
+  
+  #main{
+    position:absolute;
+    margin:100px 50px 50px 350px;
+    padding:2rem;
+    
+  }
+  
+  .header-des{
+    font-size:1.5rem;
+    font-family:monospace;
+    margin-bottom:20px;
+  }
+  
+  article{
+    margin-left:2rem;
+    /* color:hsl(0,0%,30%); */
+  }
+  
+  code{
+    background:hsl(0,0%,92%);
+    border-radius:5px;
+    padding:10px;
+    margin-bottom:10px;
+    display:block;
+  }
+  
+  
+  article p,li{
+    margin-bottom:1rem;
+    margin-top:1rem;
+  }
+  
+@media(max-width: 400px) {
+    #main-doc{
+        margin-left: -10px;
+    }
+} 
+  
+  
+  
+  

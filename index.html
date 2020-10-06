@@ -6,60 +6,56 @@
     <title>Netflics</title>
     <link href="index.css" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Liste des Films</h1>
 
-    <div id="data" class="container">
+    <!-- HEADER SECTION-->
 
-    </div>
+    <header id="header">
+        <h1 id="title">
+            NETFLICS
+        </h1>
+        <nav id="navbar-top">          
+            <ul>
+                <li><a class="nav-link" href="#">S'inscrire</a></li>
+                <li><a class="nav-link" href="#">Se connecter</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- END HEADER SECTION -->
+
+    <!-- NAVBAR SECTION -->
+    <nav id="navbar-left">
+        <div class="search">
+            <input onkeydown="search()" type="text" id="search-bar" placeholder="search...">
+        </div>
+        
+        <ul>
+            <li><a class="nav-link" href="#introduction">Ma liste</a></li>
+            <li><a class="nav-link" href="#What_you_should_already_know">Nouveautées</a></li>
+        </ul>
+    </nav>
+    <!-- END NAVBAR SECTION -->
+    
+<main id="main"> 
+
+    <!-- START SECTION -->
+   
+    <h1 id="search-output"></h1>
+    
+    <!-- END SECTION -->
+</main>
+
+<script type="text/javascript">
+
+    function search(){
+        var text = document.getElementById("search-bar").value;
+        document.getElementById("search-output").innerHTML=text;
+    }
 
 
-
-    <script type="text/javascript">
-
-        function details(id){
-
-            var apiUrlDetails = `http://netflics.com/api/films/${id}`;
-
-            console.log(apiUrlDetails);
-
-            fetch(apiUrlDetails).then(response => {
-            }).then(data => {
-                for (var object in data) {    
-                console.log(data[object]["name"]);
-            }
-                return data;
-            }).catch(err => {
-            
-            });
-                
-        }
-
-        var apiUrl = 'http://netflics.com/api/films';
-        fetch(apiUrl).then(response => {
-          return response.json();
-        }).then(data => {
-          // Work with JSON data here
-
-            for (var film in data) {    
-                //console.log(`${object}: ${data[object]}`) 
-                document.getElementById("data")
-                    .innerHTML+=
-                    `
-                    <div class="item">
-                        <img src="${data[film]["affiche"]}" alt="affiche"><br>
-                        <p>${data[film]["titre"]}<p><br>
-                    </div>`;     
-                // <button  onClick=details(${data[object]["id"]})>details</button>
-                // console.log(data[object]["name"]);
-                // console.log(data[object]["tribe"]);
-
-            }
-            return resultat;
-            }).catch(err => {
-          // Do something for an error here
-        });
-    </script>
+</script>
 
 </body>
 </html>
