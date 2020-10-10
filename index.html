@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netflics</title>
     <link href="index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -42,17 +43,48 @@
 
     <!-- START SECTION -->
    
-    <h1 id="search-output"></h1>
+    <div class="tile-grid" id="tile-container">
+        
+
+    </div>
     
+ 
     <!-- END SECTION -->
 </main>
 
+<script src="https://kit.fontawesome.com/yourcode.js"></script>
 <script type="text/javascript">
+
 
     function search(){
         var text = document.getElementById("search-bar").value;
         document.getElementById("search-output").innerHTML=text;
     }
+
+    var apiUrl = 'http://netflics.com/api/films';
+    fetch(apiUrl).then(response => {
+        return response.json();
+    }).then(data => {
+        // Work with JSON data here 
+        for (var object in data) {    
+            document.getElementById("tile-container")
+                .innerHTML+=
+                `
+                <div class="tile">
+                    <div class="tile-content">
+                        <img src="${data[object]["affiche"]}" alt="affiche titanic">
+                    </div>
+                    <div class="tile-footer">
+                        <p>${data[object]["titre"]}</p>
+                        <i id="heart" class="fa fa-heart-o"></i>
+                    </div>
+                </div>
+                `;     
+        }
+        return resultat;
+        }).catch(err => {
+        // Do something for an error here
+    });
 
 
 </script>

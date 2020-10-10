@@ -151,36 +151,84 @@ nav#navbar-top ul li a{
     
   }
   
-  .header-des{
-    font-size:1.5rem;
-    font-family:monospace;
-    margin-bottom:20px;
-  }
-  
-  article{
-    margin-left:2rem;
-    /* color:hsl(0,0%,30%); */
-  }
-  
-  code{
-    background:hsl(0,0%,92%);
-    border-radius:5px;
-    padding:10px;
-    margin-bottom:10px;
-    display:block;
-  }
-  
-  
-  article p,li{
-    margin-bottom:1rem;
-    margin-top:1rem;
-  }
   
 @media(max-width: 400px) {
     #main-doc{
         margin-left: -10px;
     }
 } 
+
+/* 
+    ----------END MAIN STYLE----------------
+#
+#
+#
+#
+#
+   ------------TILE STYLE---------------------
+*/
+
+.tile-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  justify-content:center;
+  grid-gap:2rem;
+  margin:0 3rem 3rem 3rem;
+}
+
+.tile{
+  background-color:hsl(240,20%,50%);
+  border-radius:5px;
+  /* box-shadow:5px 5px 10px 1px rgb(255, 255, 255); */
+}
+
+.tile img{
+  width:100%;
+  height: auto;
+  border-radius:5px;
+}
+
+.tile a{
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.tile:hover{
+  animation-name:shadow;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+}
+
+.tile-content{
+  margin:0.5rem;
+  background-color:red;
+  
+}
+
+.tile-footer{
+  /* background-color:red; */
+  margin:1rem;
+  text-align:center;
+  
+}
+
+#heart:hover{
+  transform: scale(1.5);
+}
+
+
+/* 
+    ----------END TILE STYLE----------------
+#
+#
+#
+#
+#
+   ------------TILE STYLE---------------------
+*/
   
   
   
