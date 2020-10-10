@@ -202,15 +202,11 @@ nav#navbar-top ul li a{
   animation-fill-mode:forwards;
 }
 
-.tile-content{
-  margin:0.5rem;
-  background-color:red;
-  
-}
 
 .tile-footer{
   /* background-color:red; */
-  margin:1rem;
+  
+  margin:1rem auto;
   text-align:center;
   
 }
