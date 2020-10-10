@@ -26,7 +26,7 @@
     <div id="container">
         <!-- zone de connexion -->
         
-        <form class="formulaire" action="verification.php" method="POST">
+        <form class="formulaire" action="login_response.php" method="POST">
             <div class="form-header">
                 <h1>Connexion</h1>
             </div>
