@@ -1,11 +1,14 @@
 <?php
+
+require_once 'connect.php';
+
 session_start();
 
 
 if(isset($_POST['username']) && isset($_POST['password']))
 {
     
-    require_once 'connect.php';
+    
       
     //On récupère les deux variables du form
     $username = $_POST['username']; 
@@ -13,15 +16,24 @@ if(isset($_POST['username']) && isset($_POST['password']))
     
     if($username !== "" && $password !== "")
     {
-      //requête SQL avec le user et le mot de passe
-      $requete = "SELECT count(*) FROM Users where 
-              prenom = '".$username."' and password = '".$password."' ";
-      $sth=$dbh->prepare($requete);
-      $sth->execute();
-      $response= $sth->fetchAll();
-     
-      $count =  $response[0]["count(*)"];
-            
+
+      echo 'TOTO';
+      try{
+         //requête SQL avec le user et le mot de passe
+         $requete = "SELECT count(*) FROM Users where 
+         prenom = '".$username."' and password = '".$password."' ";
+         $sth=$dbh->prepare($requete);
+         $sth->execute();
+         $response= $sth->fetchAll();
+
+         $count =  $response[0]["count(*)"];
+      }catch (Exception $e){
+         echo '<pre>';
+         var_dump($e);
+      }
+      echo 'TOTO';
+      
+         
       if($count!=0) // nom d'utilisateur et mot de passe correctes
       {
          $_SESSION['username'] = $username;

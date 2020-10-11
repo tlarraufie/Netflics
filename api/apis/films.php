@@ -20,9 +20,18 @@
 
    
     if($_SERVER["REQUEST_METHOD"]=="GET"){
-        $data = getAllFilms($dbh);
-        header('Content-Type: application/json');
-        echo json_encode($data);
+
+        try {
+            $data = getAllFilms($dbh);
+            header('Content-Type: application/json');
+            echo json_encode($data);
+    
+        } catch (PDOException $e) {
+            echo '<pre>';
+            var_dump($e);
+            die('could not connect to database');
+            display404();
+        }        
     }else{
         display404();
     }

@@ -1,7 +1,7 @@
 <?php
     $dbh;
     try {
-        $dbh = new PDO('sqlite:api/database.db');
+        $dbh = new PDO('sqlite:database.db');
 
     } catch (PDOException $e) {
         echo '<pre>';

@@ -11,7 +11,7 @@
 
     <header id="header">
         <h1 id="title">
-            NETFLICS
+            <a href="index.php">NETFLICS</a>
         </h1>
         <nav id="navbar-top">          
             <ul>
