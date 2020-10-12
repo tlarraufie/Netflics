@@ -21,7 +21,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
       try{
          //requête SQL avec le user et le mot de passe
          $requete = "SELECT count(*) FROM Users where 
-         prenom = '".$username."' and password = '".$password."' ";
+         username = '".$username."' and password = '".$password."' ";
          $sth=$dbh->prepare($requete);
          $sth->execute();
          $response= $sth->fetchAll();
