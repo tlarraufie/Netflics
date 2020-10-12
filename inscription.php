@@ -15,8 +15,8 @@
         </h1>
         <nav id="navbar-top">          
             <ul>
-                <li><a class="nav-link" href="#">S'inscrire</a></li>
-                <li><a class="nav-link" href="#">Se connecter</a></li>
+                <li><a class="nav-link" href="inscription.php">S'inscrire</a></li>
+                <li><a class="nav-link" href="login.php">Se connecter</a></li>
             </ul>
         </nav>
     </header>
