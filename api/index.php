@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 /**
  * Point d'entrée unique de notre application
  * C'est ce script PHP qui décide quel autre script PHP sera appelé en fonction
