@@ -3,8 +3,27 @@
     
 
     function getAllFilms($dbh){
+
         try{
             $sql = 'SELECT * FROM films';
+            $sth = $dbh->prepare( $sql );
+            $sth->execute();
+            $data = $sth->fetchAll(PDO::FETCH_OBJ);
+
+            return $data;
+        }
+        catch (PDOException $e){
+            echo '<pre>';
+            var_dump($e);
+        }
+    }
+
+    function getAllFavoris($dbh){
+
+        try{
+            //$sql = "SELECT * FROM Listes WHERE idUser = '".$_SESSION['idUser']."' ";
+            $sql = "SELECT * FROM Listes L JOIN Films F ON L.idFilm = F.idFilm WHERE idUser = '".$_SESSION['idUser']."' ";
+
             $sth = $dbh->prepare( $sql );
             $sth->execute();
             $data = $sth->fetchAll(PDO::FETCH_OBJ);
@@ -22,7 +41,14 @@
     if($_SERVER["REQUEST_METHOD"]=="GET"){
 
         try {
-            $data = getAllFilms($dbh);
+
+            if(isset($_GET['favoris'])){
+                if($_GET['favoris']==true)
+                $data = getAllFavoris($dbh);
+            }else{
+                $data = getAllFilms($dbh);
+            }
+            
             header('Content-Type: application/json');
             echo json_encode($data);
     

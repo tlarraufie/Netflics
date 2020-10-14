@@ -7,7 +7,7 @@
         {  
             session_unset();
             $flag=false;
-            header("location:index.html");
+            header("location:index.php");
         }
     }else if($_SESSION['username'] !== ""){
         $user = $_SESSION['username'];
@@ -36,7 +36,17 @@
         </h1>
         <nav id="navbar-top">          
             <ul>
-                <li><a class='nav-link' href='index.php?deconnexion=true'>Deconnexion</a></li>
+                <?php 
+                    if($_SESSION['username'] != null){
+                        echo '<li><a class="nav-link" href="index.php?deconnexion=true">Deconnexion</a></li>';
+                    }else{
+                        echo '<li><a class="nav-link" href="inscription.php">Sinscrire</a></li>';
+                        echo '<li><a class="nav-link" href="login.php">Se connecter</a></li>';
+                    }
+                
+                ?>
+                    
+                
             </ul>
         </nav>
     </header>
@@ -53,10 +63,19 @@
         <div class="search">
             <input onkeydown="search()" type="text" id="search-bar" placeholder="search...">
         </div>
-        
+        <h1 id="test"></h1>
         <ul>
-            <li><a class="nav-link" href="#introduction">Ma liste</a></li>
-            <li><a class="nav-link" href="#What_you_should_already_know">Nouveautées</a></li>
+            <?php 
+                if($_SESSION['username'] != null){
+                    echo '<button onclick=getFavoris()>Ma Liste</button>';
+                    echo '<button onclick=test()>Nouveautés</button>';
+                }else{
+                    echo '<button onclick=test()>Nouveautés</button>';
+                }
+            
+            ?>
+            
+            
         </ul>
     </nav>
     <!-- END NAVBAR SECTION -->
@@ -77,35 +96,80 @@
 <script type="text/javascript">
 
 
+    
+    window.onload=() => {
+        getAllFilms();
+    }
+
+    function test(){
+        document.getElementById("tile-container").innerHTML="REUSSI";
+    }
+
     function search(){
         var text = document.getElementById("search-bar").value;
         document.getElementById("search-output").innerHTML=text;
     }
 
-    var apiUrl = 'http://netflics.com/api/films';
-    fetch(apiUrl).then(response => {
-        return response.json();
-    }).then(data => {
-        // Work with JSON data here 
-        for (var object in data) {    
-            document.getElementById("tile-container")
-                .innerHTML+=
-                `
-                <div class="tile">
-                    <div class="tile-content">
-                        <img src="${data[object]["affiche"]}" alt="affiche titanic">
+    function getFavoris(){
+        var apiUrl = 'http://netflics.com/api/films?favoris=true';
+        fetch(apiUrl).then(response => {
+            return response.json();
+        }).then(data => {
+            // Work with JSON data here
+            document.getElementById("tile-container").innerHTML=""; 
+            for (var object in data) {  
+                
+                document.getElementById("tile-container")
+                    .innerHTML+=
+                    `
+                    <div class="tile">
+                        <div class="tile-content">
+                            <img src="${data[object]["affiche"]}" alt="affiche ${data[object]["titre"]}">
+                        </div>
+                        <div class="tile-footer">
+                            <p>${data[object]["titre"]}</p>
+                            <a class="addtowishlist"><i class="fa fa-heart-o"></i></a>
+                        </div>
                     </div>
-                    <div class="tile-footer">
-                        <p>${data[object]["titre"]}</p>
-                        <a class="addtowishlist"><i class="fa fa-heart-o"></i></a>
+                    `;     
+            }
+            return resultat;
+            }).catch(err => {
+            // Do something for an error here
+        });
+    }
+
+
+    function getAllFilms(){
+        var apiUrl = 'http://netflics.com/api/films';
+        fetch(apiUrl).then(response => {
+            return response.json();
+        }).then(data => {
+            // Work with JSON data here 
+            document.getElementById("tile-container").innerHTML=""; 
+            for (var object in data) {   
+                
+                document.getElementById("tile-container")
+                    .innerHTML+=
+                    `
+                    <div class="tile">
+                        <div class="tile-content">
+                            <img src="${data[object]["affiche"]}" alt="affiche ${data[object]["titre"]}">
+                        </div>
+                        <div class="tile-footer">
+                            <p>${data[object]["titre"]}</p>
+                            <a class="addtowishlist"><i class="fa fa-heart-o"></i></a>
+                        </div>
                     </div>
-                </div>
-                `;     
-        }
-        return resultat;
-        }).catch(err => {
-        // Do something for an error here
-    });
+                    `;     
+            }
+            return resultat;
+            }).catch(err => {
+            // Do something for an error here
+        });
+    }
+
+    
 
 
 </script>
