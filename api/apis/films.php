@@ -60,28 +60,6 @@
         }        
     }else{
         display404();
-    }
-        
-    
-    
-    // foreach($allCharacters as $student){
-    //     print_r($student->name.' : '.$student->tribe);
-    //     echo '<br><br>';
-    // }
-
-    
-    // $response = [
-    //     "data" => "Voici une reponse generique pour une collection"
-    // ];
-
-    /*
-        - comment afficher le code erreur
-        - comment afficher les champs
-        - comment faire le tri
-
-
-    */
-    
-    
-        
+    }         
+       
 ?>

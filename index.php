@@ -83,6 +83,8 @@
 <main id="main"> 
        <!-- START SECTION -->
    
+    <h1 id="titre"></h1>
+
     <div class="tile-grid" id="tile-container">
         
 
@@ -105,11 +107,13 @@
         document.getElementById("tile-container").innerHTML="REUSSI";
     }
 
+    
+
     function search(){
         var text = document.getElementById("search-bar").value;
         document.getElementById("search-output").innerHTML=text;
     }
-
+    // ,{method:"POST"})
     function getFavoris(){
         var apiUrl = 'http://netflics.com/api/films?favoris=true';
         fetch(apiUrl).then(response => {
@@ -128,7 +132,8 @@
                         </div>
                         <div class="tile-footer">
                             <p>${data[object]["titre"]}</p>
-                            <a class="addtowishlist"><i class="fa fa-heart-o"></i></a>
+                            <a onclick="" class="addtowishlist"><i class="fa fa-heart-o"></i></a>
+                            
                         </div>
                     </div>
                     `;     
@@ -158,7 +163,8 @@
                         </div>
                         <div class="tile-footer">
                             <p>${data[object]["titre"]}</p>
-                            <a class="addtowishlist"><i class="fa fa-heart-o"></i></a>
+                            <button class="btnFavoris" onclick="addFavoris(${data[object]["idFilm"]})" "><i id="${data[object]["idFilm"]}" class="fa fa-heart-o"></i></button>
+                            <p id="testp"></p>
                         </div>
                     </div>
                     `;     
@@ -169,8 +175,17 @@
         });
     }
 
-    
-
+    function addFavoris(idFilm){
+        var elem = document.getElementById(idFilm).classList;
+        
+        if(elem[1]=="fa-heart-o"){
+            elem.replace("fa-heart-o","fa-heart");
+        }else{
+            elem.replace("fa-heart","fa-heart-o");
+        }
+        
+        
+    }
 
 </script>
 
