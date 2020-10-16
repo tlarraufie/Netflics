@@ -61,7 +61,7 @@
         ?>
         
         <div class="search">
-            <input onkeydown="search()" type="text" id="search-bar" placeholder="search...">
+            <input onkeydown="searchOutput()" type="text" id="search-bar" placeholder="search...">
         </div>
         <h1 id="test"></h1>
         
@@ -105,9 +105,40 @@
         document.getElementById("tile-container").innerHTML="REUSSI";
     }
 
+    function searchOutput(){
+        //document.getElementById("tile-container").innerHTML="sa marche"
+        search();
+    }
     function search(){
-        var text = document.getElementById("search-bar").value;
-        document.getElementById("search-output").innerHTML=text;
+        //debugger;
+        var searchInput = document.getElementById("search-bar").value;
+        console.log(search)
+        //document.getElementById("search-output").innerHTML=text;
+        var apiUrl = `http://netflics.com/api/films?searchCheck=true&searchInputAPI=${searchInput}`
+        fetch(apiUrl).then(response => {
+            return response.json();
+        }).then(data => {
+            //Work with JSON data here
+            document.getElementById("tile-container").innerHTML="";
+            for (var object in data){
+
+                document.getEementById("tile-container").innerHTML+=
+                `
+                    <div class="tile">
+                        <div class="tile-content">
+                            <img src="${data[object]["affiche"]}" alt="affiche ${data[object]["titre"]}">
+                        </div>
+                        <div class="tile-footer">
+                            <p>${data[object]["titre"]}</p>
+                            <a class="addtowishlist"><i class="fa fa-heart-o"></i></a>
+                        </div>
+                    </div>
+                    `;    
+            }
+            return resultat;
+        }).catch(err => {
+            //Do something for an error here
+        });
     }
 
     function getFavoris(){
