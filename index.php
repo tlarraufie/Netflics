@@ -64,19 +64,19 @@
             <input onkeydown="search()" type="text" id="search-bar" placeholder="search...">
         </div>
         <h1 id="test"></h1>
-        <ul>
-            <?php 
-                if($_SESSION['username'] != null){
-                    echo '<button onclick=getFavoris()>Ma Liste</button>';
-                    echo '<button onclick=test()>Nouveautés</button>';
-                }else{
-                    echo '<button onclick=test()>Nouveautés</button>';
-                }
+        
+        <?php 
+            if($_SESSION['username'] != null){
+                echo '<button class="btn btn-fav" onclick=getFavoris()>Ma Liste</button>';
+                echo '<button class="btn btn-news" onclick=test()>Nouveautés</button>';
+            }else{
+                echo '<button class="btn btn-news" onclick=test()>Nouveautés</button>';
+            }
+        
+        ?>
             
-            ?>
             
-            
-        </ul>
+        
     </nav>
     <!-- END NAVBAR SECTION -->
     

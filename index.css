@@ -120,9 +120,13 @@ nav#navbar-top ul li a{
     display:block;
   }
 
+  hr{
+    margin-top:2rem;
+    border-top: solid 0.5px white;
+    
+  }
 
-
-  input#search-bar{
+  input{
     margin-top:2rem;
     height: 45px;
     padding: 0 20px;
@@ -133,6 +137,14 @@ nav#navbar-top ul li a{
     
    }
 
+   .btn{
+    margin-top:2rem;
+    height: 45px;
+    padding: 0 20px;
+   }
+   
+
+  
 
 
 /* 
