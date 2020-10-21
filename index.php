@@ -143,6 +143,7 @@
         }).then(data => {
             FillData(data);
             // return data;
+            
         }).catch(err => {
             // Do something for an error here
         });
@@ -199,11 +200,13 @@
 
     function addFavoris(idFilm){
 
+        alert(idFilm);
         const apiUrl = 'http://netflics.com/api/films?x='+idFilm;
         
         fetch(apiUrl)
         .then(response => {
             return response.json();
+            
         })
         .then(data => {
             console.log(data);
