@@ -68,9 +68,9 @@
         <?php 
             if($_SESSION['username'] != null){
                 echo '<button class="btn btn-fav" onclick=getFavoris()>Ma Liste</button>';
-                echo '<button class="btn btn-news" onclick=test()>Nouveautés</button>';
+                echo '<button class="btn btn-news" onclick=getAllFilms()>Nouveautés</button>';
             }else{
-                echo '<button class="btn btn-news" onclick=test()>Nouveautés</button>';
+                echo '<button class="btn btn-news" onclick=getAllFilms()>Nouveautés</button>';
             }
         
         ?>
@@ -81,8 +81,21 @@
     <!-- END NAVBAR SECTION -->
     
 <main id="main"> 
-       <!-- START SECTION -->
-   
+    <!-- START SECTION -->
+
+    <!-- TEMPLATE TILE -->
+    <template id="tile-template">
+        <div class="tile">
+            <div class="tile-content">
+                <img src="" alt="">
+            </div>
+            <div class="tile-footer">
+                <p id="tile-title"></p>
+                <button class="btnFavoris" onclick=""><i id="" class="fa fa-heart-o"></i></button>
+            </div>
+        </div>   
+    </template>
+
     <div class="tile-grid" id="tile-container">
         
 
@@ -95,82 +108,167 @@
 <script src="https://kit.fontawesome.com/yourcode.js"></script>
 <script type="text/javascript">
 
-
-    
     window.onload=() => {
         getAllFilms();
+        
     }
 
     function test(){
         document.getElementById("tile-container").innerHTML="REUSSI";
     }
 
+    
+
     function search(){
         var text = document.getElementById("search-bar").value;
         document.getElementById("search-output").innerHTML=text;
     }
-
+    // ,{method:"POST"})
     function getFavoris(){
         var apiUrl = 'http://netflics.com/api/films?favoris=true';
         fetch(apiUrl).then(response => {
             return response.json();
         }).then(data => {
-            // Work with JSON data here
-            document.getElementById("tile-container").innerHTML=""; 
-            for (var object in data) {  
-                
-                document.getElementById("tile-container")
-                    .innerHTML+=
-                    `
-                    <div class="tile">
-                        <div class="tile-content">
-                            <img src="${data[object]["affiche"]}" alt="affiche ${data[object]["titre"]}">
-                        </div>
-                        <div class="tile-footer">
-                            <p>${data[object]["titre"]}</p>
-                            <a class="addtowishlist"><i class="fa fa-heart-o"></i></a>
-                        </div>
-                    </div>
-                    `;     
-            }
-            return resultat;
-            }).catch(err => {
-            // Do something for an error here
+            FillData(data);
+            //return data;
+        }).catch(err => {
+        // Do something for an error here
         });
     }
-
 
     function getAllFilms(){
         var apiUrl = 'http://netflics.com/api/films';
         fetch(apiUrl).then(response => {
             return response.json();
         }).then(data => {
-            // Work with JSON data here 
-            document.getElementById("tile-container").innerHTML=""; 
-            for (var object in data) {   
-                
-                document.getElementById("tile-container")
-                    .innerHTML+=
-                    `
-                    <div class="tile">
-                        <div class="tile-content">
-                            <img src="${data[object]["affiche"]}" alt="affiche ${data[object]["titre"]}">
-                        </div>
-                        <div class="tile-footer">
-                            <p>${data[object]["titre"]}</p>
-                            <a class="addtowishlist"><i class="fa fa-heart-o"></i></a>
-                        </div>
-                    </div>
-                    `;     
-            }
-            return resultat;
-            }).catch(err => {
+            FillData(data);
+            // return data;
+            
+        }).catch(err => {
             // Do something for an error here
         });
+        
     }
 
-    
+    function FillData(data){
 
+        if (document.createElement("template").content) {
+
+            //Vide complétement le container et supprime les éléments enfants
+            var box = document.querySelector("#tile-container");
+            while (box.firstChild) { 
+                box.removeChild(box.firstChild); 
+            } 
+
+            //Remplissage du container avec les nouveaux enfants
+            for (var object in data) {  
+
+                //on récupère le template et on le clone
+                var template = document.querySelector("#tile-template");
+                var clone = document.importNode(template.content, true);
+
+                //Remplissage de l'image
+                var image = clone.querySelector("img");
+                image.setAttribute("alt", data[object]["titre"]);
+                image.setAttribute("src", data[object]["affiche"]);
+            
+                //Remplissage du titre
+                var title = clone.querySelector("p");
+                title.innerHTML= data[object]["titre"];
+
+                //Remplissage du bouton
+                var button = clone.querySelector("button");
+                button.setAttribute("onclick", "toggleFavoris("+data[object]["idFilm"]+")");
+                
+                //Remplissage de l'icon 
+                var icon = clone.querySelector("i");
+                icon.setAttribute("id", data[object]["idFilm"]);
+
+                // On récupère l'emplacement ou on veut insérer le template
+                var tempBody = document.querySelector("#tile-container");
+                
+                //On ajoute notre item dans l'élément
+                tempBody.appendChild(clone);
+                
+            }
+            console.log("APRES: "+tempBody.hasChildNodes());
+            console.log("Support Template tag");
+        } else {
+            console.log("Not support Template tag");
+        }
+    }
+
+    function addFavoris(idFilm){
+
+        alert(idFilm);
+        const apiUrl = 'http://netflics.com/api/films?x='+idFilm;
+        
+        fetch(apiUrl)
+        .then(response => {
+            return response.json();
+            
+        })
+        .then(data => {
+            console.log(data);
+            
+            return resultat;
+        }).catch(err => {
+            // Do something for an error here
+        }); 
+
+    }
+
+    function removeFavoris(idFilm){
+        alert("removeFavoris");
+    }
+
+    function toggleFavoris(idFilm){
+        var elem = document.getElementById(idFilm).classList;
+        
+        if(elem[1]=="fa-heart-o"){
+            elem.replace("fa-heart-o","fa-heart");
+            addFavoris(idFilm);
+            // alert(idFilm)
+        }else{
+            elem.replace("fa-heart","fa-heart-o");
+            // removeFavoris(idFilm);
+        }  
+    }
+
+    // function getFavoris(){
+    //     var apiUrl = 'http://netflics.com/api/films?favoris=true';
+    // }
+    // function getAllFilms(){
+    //     var apiUrl = 'http://netflics.com/api/films';
+    //     fetch(apiUrl).then(response => {
+    //         return response.json();
+    //     }).then(data => {
+
+    //         // Work with JSON data here 
+    //         document.getElementById("tile-container").innerHTML=""; 
+    //         for (var object in data) {   
+              
+    //             document.getElementById("tile-container")
+    //                 .innerHTML+=
+    //                 `
+    //                 <div class="tile">
+    //                     <div class="tile-content">
+    //                         <img src="${data[object]["affiche"]}" alt="affiche ${data[object]["titre"]}">
+    //                     </div>
+    //                     <div class="tile-footer">
+    //                         <p>${data[object]["titre"]}</p>
+    //                         <button class="btnFavoris" onclick="toggleFavoris(${data[object]["idFilm"]})" "><i id="${data[object]["idFilm"]}" class="fa fa-heart-o"></i></button>
+    //                         <p id="testp"></p>
+    //                     </div>
+    //                 </div>
+    //                 `;    
+                    
+    //         }
+    //         return resultat;
+    //         }).catch(err => {
+    //         // Do something for an error here
+    //     });
+    // }
 
 </script>
 

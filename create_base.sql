@@ -46,7 +46,10 @@ INSERT INTO Users (nom, prenom,username, password, age) VALUES ("Amouret","Robin
 INSERT INTO Users (nom, prenom,username,password, age) VALUES ("Zhou","Kevin","Xx_Jean-KevinDarkLolMaster_xX","123",23);
 
 INSERT INTO Listes (idUser,idFilm,date) VALUES (1,1,"01/01/01");
-INSERT INTO Listes (idUser,idFilm,date) VALUES (2,1,"05/01/01");
+INSERT INTO Listes (idUser,idFilm,date) VALUES (2,1,"05/09/01");
+INSERT INTO Listes (idUser,idFilm,date) VALUES (1,3,"04/01/01");
+INSERT INTO Listes (idUser,idFilm,date) VALUES (1,5,"12/08/01");
+INSERT INTO Listes (idUser,idFilm,date) VALUES (1,9,"05/03/01");
 
 -- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Le Seigneur des Anneaux : Les Deux Tours','Peter Jackson','Warner Bros','02:59:00', '2002-12-18', '/images/LOTR2.jpg');
 -- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Le Seigneur des Anneaux : Le Retour du Roi','Peter Jackson','Warner Bros','03:21:00', '2003-12-17', '/images/LOTR3.jpg');

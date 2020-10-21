@@ -1,7 +1,7 @@
 <?php
     $dbh;
     try {
-        $dbh = new PDO('sqlite:/var/www/netflics.com/database.db');
+        $dbh = new PDO('sqlite:/var/www/netflics.com/base.db');
 
     } catch (PDOException $e) {
         echo '<pre>';
