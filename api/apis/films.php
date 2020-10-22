@@ -36,20 +36,51 @@
     }
 
     function addFavoris($dbh,$idFilm){
-
+        //Vérification de l'absence de la ligne dans la base avant ajout
         try{
-            
-            $sql = "INSERT INTO Listes (idUser,idFilm,date) VALUES ('".$_SESSION['idUser']."','".$idFilm."','04/09/01');";
-            $sth = $dbh->prepare( $sql );
+            $requete = "SELECT * FROM Listes where 
+            idUser = '".$_SESSION['idUser']."' AND idFilm = '".$idFilm."' ";
+            $sth=$dbh->prepare($requete);
             $sth->execute();
+            $response= $sth->fetchAll();
+        }catch (Exception $e){
+        echo '<pre>';
+        var_dump($e);
+        }
 
-            $data = [$sth->fetchAll(PDO::FETCH_OBJ),"REUSSI"];
+        if($response == null){
+            try{
+                
+                $sql = "INSERT INTO Listes (idUser,idFilm,date) VALUES ('".$_SESSION['idUser']."','".$idFilm."','04/09/01');";
+                $sth = $dbh->prepare( $sql );
+                $sth->execute();
+
+                $data = "ADD REUSSI".$idFilm;
+                
+            }
+            catch (PDOException $e){
+                echo '<pre>';
+                var_dump($e);
+                $data = "ADD ERROR";
+            }
+        }
             
+        return $data;
+    }
+
+    function removeFavoris($dbh,$idFilm){
+
+        try{          
+            $sql = "DELETE FROM Listes WHERE idUser = '".$_SESSION['idUser']."' AND idFilm = '".$idFilm."'";
+            $sth = $dbh->prepare( $sql );
+            $sth->execute(); 
+            
+            $data = "REMOVE REUSSI".$idFilm;
         }
         catch (PDOException $e){
             echo '<pre>';
             var_dump($e);
-            $test = "PERDU";
+            $data = "REMOVE ERROR";
         }
         return $data;
     }
@@ -64,11 +95,17 @@
                 if($_GET['favoris']==true)
                 $data = getAllFavoris($dbh);
 
-            }elseif(isset($_GET['x'])){
-                $idFilm = $_GET['x'];
-                $data = $idFilm;
+            }elseif(isset($_GET['add'])){
+                $idFilm = $_GET['add'];
+                
 
                 addFavoris($dbh,$idFilm);
+
+            }elseif(isset($_GET['remove'])){
+                $idFilm = $_GET['remove'];
+                
+
+                removeFavoris($dbh,$idFilm);
 
             }else{
                 $data = getAllFilms($dbh);

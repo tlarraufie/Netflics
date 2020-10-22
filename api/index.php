@@ -8,11 +8,13 @@ session_start();
 
 // Ici la liste de vos APIs et de leurs scripts associés
 $apis = [
-    "useless" => "apis/useless-list.php",
-    "useless/(\d+)" => "apis/useless-instance.php",
-    "characters"=>"apis/characters.php",
-    "characters/(\d+)"=>"apis/characters-instance.php",
-    "films"=>"apis/films.php"
+    // "useless" => "apis/useless-list.php",
+    // "useless/(\d+)" => "apis/useless-instance.php",
+    // "characters"=>"apis/characters.php",
+    // "characters/(\d+)"=>"apis/characters-instance.php",
+    "films"=>"apis/films.php",
+    "films/(\d+)" => "apis/film-instance.php"
+
 ];
 
 

@@ -30,26 +30,7 @@
 
     <!-- HEADER SECTION-->
 
-    <header id="header">
-        <h1 id="title">
-            <a href="index.php">NETFLICS</a>
-        </h1>
-        <nav id="navbar-top">          
-            <ul>
-                <?php 
-                    if($_SESSION['username'] != null){
-                        echo '<li><a class="nav-link" href="index.php?deconnexion=true">Deconnexion</a></li>';
-                    }else{
-                        echo '<li><a class="nav-link" href="inscription.php">Sinscrire</a></li>';
-                        echo '<li><a class="nav-link" href="login.php">Se connecter</a></li>';
-                    }
-                
-                ?>
-                    
-                
-            </ul>
-        </nav>
-    </header>
+    <?php include_once 'header.php'; ?>
     
     <!-- END HEADER SECTION -->
 
@@ -85,7 +66,7 @@
     <template id="tile-template">
         <div class="tile">
             <div class="tile-content">
-                <img src="" alt="">
+                <a href=""><img src="" alt=""></a>
             </div>
             <div class="tile-footer">
                 <p id="tile-title"></p>
@@ -108,9 +89,7 @@
 <script type="text/javascript">
 
     window.onload=() => {
-        getAllFilms();
-        
-        
+        getAllFilms();    
     }
 
     function search(){
@@ -165,6 +144,11 @@
                 var image = clone.querySelector("img");
                 image.setAttribute("alt", data[object]["titre"]);
                 image.setAttribute("src", data[object]["affiche"]);
+
+                //Remplissage de du lien
+                var link = clone.querySelector("a");
+                link.setAttribute("href", "film/"+data[object]["titre"]);
+              
             
                 //Remplissage du titre
                 var title = clone.querySelector("p");
