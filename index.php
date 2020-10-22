@@ -74,9 +74,7 @@
             }
         
         ?>
-            
-            
-        
+  
     </nav>
     <!-- END NAVBAR SECTION -->
     
@@ -91,7 +89,8 @@
             </div>
             <div class="tile-footer">
                 <p id="tile-title"></p>
-                <button class="btnFavoris" onclick=""><i id="" class="fa fa-heart-o"></i></button>
+                <!-- <button class="btnFavoris" onclick=""><i id="" class="fa fa-heart-o"></i></button> -->
+                <i onclick="alert('ett')" id=""></i></a>
             </div>
         </div>   
     </template>
@@ -111,13 +110,8 @@
     window.onload=() => {
         getAllFilms();
         
+        
     }
-
-    function test(){
-        document.getElementById("tile-container").innerHTML="REUSSI";
-    }
-
-    
 
     function search(){
         var text = document.getElementById("search-bar").value;
@@ -177,13 +171,14 @@
                 title.innerHTML= data[object]["titre"];
 
                 //Remplissage du bouton
-                var button = clone.querySelector("button");
-                button.setAttribute("onclick", "toggleFavoris("+data[object]["idFilm"]+")");
+                // var button = clone.querySelector("button");
+                // button.setAttribute("onclick", "toggleFavoris("+data[object]["idFilm"]+")");
                 
                 //Remplissage de l'icon 
                 var icon = clone.querySelector("i");
+                icon.setAttribute("onclick", "toggleFavoris("+data[object]["idFilm"]+")");
                 icon.setAttribute("id", data[object]["idFilm"]);
-
+                
                 // On récupère l'emplacement ou on veut insérer le template
                 var tempBody = document.querySelector("#tile-container");
                 
@@ -191,26 +186,25 @@
                 tempBody.appendChild(clone);
                 
             }
-            console.log("APRES: "+tempBody.hasChildNodes());
-            console.log("Support Template tag");
+            
+            console.log("TEMPLATE : Support Template tag");
         } else {
-            console.log("Not support Template tag");
+            console.log("TEMPLATE : Not support Template tag");
         }
     }
 
     function addFavoris(idFilm){
 
-        alert(idFilm);
-        const apiUrl = 'http://netflics.com/api/films?x='+idFilm;
+        console.log("addFavoris(): IdFilm = " + idFilm);
+
+        const apiUrl = 'http://netflics.com/api/films?add='+idFilm;
         
         fetch(apiUrl)
         .then(response => {
-            return response.json();
-            
+            return response.json();   
         })
         .then(data => {
-            console.log(data);
-            
+                       
             return resultat;
         }).catch(err => {
             // Do something for an error here
@@ -219,20 +213,39 @@
     }
 
     function removeFavoris(idFilm){
-        alert("removeFavoris");
+
+        console.log("removeFavoris(): IdFilm = " + idFilm);
+
+        const apiUrl = 'http://netflics.com/api/films?remove='+idFilm;
+        
+        fetch(apiUrl)
+        .then(response => {
+            return response.json();   
+        })
+        .then(data => {
+                       
+            return resultat;
+        }).catch(err => {
+            // Do something for an error here
+        }); 
     }
 
+    
+
     function toggleFavoris(idFilm){
-        var elem = document.getElementById(idFilm).classList;
-        
-        if(elem[1]=="fa-heart-o"){
-            elem.replace("fa-heart-o","fa-heart");
-            addFavoris(idFilm);
-            // alert(idFilm)
+
+        var icon = document.getElementById(idFilm);
+        icon.classList.toggle("press"); // changement d'etat
+
+        //Selon l'etat du bouton, on appelle ADD ou REMOVE
+        if(icon.classList[0]=="press"){
+            console.log("call ADD"); 
+            addFavoris(idFilm);   
         }else{
-            elem.replace("fa-heart","fa-heart-o");
-            // removeFavoris(idFilm);
-        }  
+            console.log("call REMOVE");
+            removeFavoris(idFilm);
+        }
+         
     }
 
     // function getFavoris(){
