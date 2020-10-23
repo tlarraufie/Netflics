@@ -1,0 +1,16 @@
+
+/*
+   ------------INFO STYLE---------------------
+*/
+
+.content{
+   display: flex;
+}
+
+.content-img{
+   background-color: red;
+}
+
+.content-info{
+   background-color: yellow;
+}

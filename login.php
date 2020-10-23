@@ -4,22 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire</title>
-    <link href="form.css" rel="stylesheet">
+    <link href="styles/form.css" rel="stylesheet">
 </head>
 <body>
     <!-- HEADER SECTION-->
 
-    <header id="header">
-        <h1 id="title">
-            <a href="index.php">NETFLICS</a>
-        </h1>
-        <nav id="navbar-top">          
-            <ul>
-                <li><a class="nav-link" href="inscription.php">S'inscrire</a></li>
-                <li><a class="nav-link" href="login.php">Se connecter</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include_once 'components/header.php'; ?>
     
     <!-- END HEADER SECTION -->
 

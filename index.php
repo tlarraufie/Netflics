@@ -22,68 +22,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netflics</title>
-    <link href="index.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/index.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
 
-    <!-- HEADER SECTION-->
+    <!-- HEADER and LeftBar SECTION-->
 
-    <?php include_once 'header.php'; ?>
+    <?php include_once 'components/header.php'; ?>
+
+    <?php include_once 'components/leftBar.php'; ?>
+
+     <!-- END HEADER and LeftBar SECTION-->
     
-    <!-- END HEADER SECTION -->
+    <main id="main"> 
+        <!-- START SECTION -->
 
-    <!-- NAVBAR SECTION -->
-    <nav id="navbar-left">
-        <?php 
-            echo "<div class='user'><h2>$user</h2></div>";
+        <!-- TEMPLATE TILE -->
+        <template id="tile-template">
+            <div class="tile">
+                <div class="tile-content">
+                    <a href=""><img src="" alt=""></a>
+                </div>
+                <div class="tile-footer">
+                    <p id="tile-title"></p>
+                    <!-- <button class="btnFavoris" onclick=""><i id="" class="fa fa-heart-o"></i></button> -->
+                    <i onclick="alert('ett')" id=""></i></a>
+                </div>
+            </div>   
+        </template>
+
+        <div class="tile-grid" id="tile-container">
             
-        ?>
-        
-        <div class="search">
-            <input onkeydown="search()" type="text" id="search-bar" placeholder="search...">
+
         </div>
-        <h1 id="test"></h1>
         
-        <?php 
-            if($_SESSION['username'] != null){
-                echo '<button class="btn btn-fav" onclick=getFavoris()>Ma Liste</button>';
-                echo '<button class="btn btn-news" onclick=getAllFilms()>Nouveautés</button>';
-            }else{
-                echo '<button class="btn btn-news" onclick=getAllFilms()>Nouveautés</button>';
-            }
-        
-        ?>
-  
-    </nav>
-    <!-- END NAVBAR SECTION -->
     
-<main id="main"> 
-    <!-- START SECTION -->
-
-    <!-- TEMPLATE TILE -->
-    <template id="tile-template">
-        <div class="tile">
-            <div class="tile-content">
-                <a href=""><img src="" alt=""></a>
-            </div>
-            <div class="tile-footer">
-                <p id="tile-title"></p>
-                <!-- <button class="btnFavoris" onclick=""><i id="" class="fa fa-heart-o"></i></button> -->
-                <i onclick="alert('ett')" id=""></i></a>
-            </div>
-        </div>   
-    </template>
-
-    <div class="tile-grid" id="tile-container">
-        
-
-    </div>
-    
- 
-    <!-- END SECTION -->
-</main>
+        <!-- END SECTION -->
+    </main>
 
 <script src="https://kit.fontawesome.com/yourcode.js"></script>
 <script type="text/javascript">
@@ -147,7 +125,7 @@
 
                 //Remplissage de du lien
                 var link = clone.querySelector("a");
-                link.setAttribute("href", "film/"+data[object]["titre"]);
+                link.setAttribute("href", "filmInfo.php?x="+data[object]["idFilm"]);
               
             
                 //Remplissage du titre

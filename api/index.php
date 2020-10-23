@@ -13,11 +13,9 @@ $apis = [
     // "characters"=>"apis/characters.php",
     // "characters/(\d+)"=>"apis/characters-instance.php",
     "films"=>"apis/films.php",
-    "films/(\d+)" => "apis/film-instance.php"
-
+    "films/(\d+)" => "apis/film-instance.php",
+    "film/info/(\d+)" => "filmInfo.php"
 ];
-
-
 
 /**
  * VOUS NE DEVRIREZ PAS AVOIR À MODIFIER LE CODE PLUS BAS
