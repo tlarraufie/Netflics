@@ -7,10 +7,20 @@
    display: flex;
 }
 
-.content-img{
-   background-color: red;
+img{
+   width:350px;
+   height: auto;
+   margin-left: 2rem;
 }
 
+
 .content-info{
-   background-color: yellow;
+   margin-left: 5rem;
+   padding:0em 5em;
+   
+}
+
+p{
+   margin-top:1rem;
+   display: flex;
 }

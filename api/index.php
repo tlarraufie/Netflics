@@ -13,8 +13,7 @@ $apis = [
     // "characters"=>"apis/characters.php",
     // "characters/(\d+)"=>"apis/characters-instance.php",
     "films"=>"apis/films.php",
-    "films/(\d+)" => "apis/film-instance.php",
-    "film/info/(\d+)" => "filmInfo.php"
+    "films/(\d+)" => "apis/film-instance.php"
 ];
 
 /**

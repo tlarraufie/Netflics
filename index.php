@@ -66,28 +66,58 @@
 <script src="https://kit.fontawesome.com/yourcode.js"></script>
 <script type="text/javascript">
 
+    var tFav= [];
+
     window.onload=() => {
-        getAllFilms();    
+
+        reloadFavoris(); // permet de rafraichir la liste des films favoris de l'utilisateur 
+        getAllFilms(); // lance l'appel à l'api pour récupérer l'ensemble des films de la base
+          
     }
 
     function search(){
         var text = document.getElementById("search-bar").value;
         document.getElementById("search-output").innerHTML=text;
     }
-    // ,{method:"POST"})
+
+    //Appel l'api pour récupérer la liste des favoris et les stock dans un tableau
+    function reloadFavoris(){
+     
+        tFav.length = 0; // On vide le tableau avant de le remplir avec les nouvelles données
+
+        var apiUrl = 'http://netflics.com/api/films?favoris=true';
+        fetch(apiUrl).then(response => {
+            return response.json();
+        }).then(data => {
+
+        // Remplissage du tableau de favoris      
+           for (var object in data) {
+                tFav.push(data[object]["idFilm"]);    
+           }
+           console.log("RELOAD TAB FAVORIS :"+tFav);
+
+            // return data;
+        }).catch(err => {
+        // Do something for an error here
+        });
+
+    }
+
     function getFavoris(){
+   
         var apiUrl = 'http://netflics.com/api/films?favoris=true';
         fetch(apiUrl).then(response => {
             return response.json();
         }).then(data => {
             FillData(data);
-            //return data;
+            return data;
         }).catch(err => {
         // Do something for an error here
         });
     }
 
     function getAllFilms(){
+    
         var apiUrl = 'http://netflics.com/api/films';
         fetch(apiUrl).then(response => {
             return response.json();
@@ -140,7 +170,15 @@
                 var icon = clone.querySelector("i");
                 icon.setAttribute("onclick", "toggleFavoris("+data[object]["idFilm"]+")");
                 icon.setAttribute("id", data[object]["idFilm"]);
+
                 
+                for(var i= 0; i < tFav.length; i++)
+                {
+                    if(tFav[i] === data[object]["idFilm"]){
+                        icon.setAttribute("class", "press"); 
+                    }
+                }
+
                 // On récupère l'emplacement ou on veut insérer le template
                 var tempBody = document.querySelector("#tile-container");
                 
@@ -149,14 +187,14 @@
                 
             }
             
-            console.log("TEMPLATE : Support Template tag");
+            
         } else {
             console.log("TEMPLATE : Not support Template tag");
         }
     }
 
     function addFavoris(idFilm){
-
+        
         console.log("addFavoris(): IdFilm = " + idFilm);
 
         const apiUrl = 'http://netflics.com/api/films?add='+idFilm;
@@ -171,6 +209,8 @@
         }).catch(err => {
             // Do something for an error here
         }); 
+
+        
 
     }
 
@@ -190,12 +230,14 @@
         }).catch(err => {
             // Do something for an error here
         }); 
+
+        
     }
 
     
 
     function toggleFavoris(idFilm){
-
+        
         var icon = document.getElementById(idFilm);
         icon.classList.toggle("press"); // changement d'etat
 
@@ -207,6 +249,8 @@
             console.log("call REMOVE");
             removeFavoris(idFilm);
         }
+
+        reloadFavoris();
          
     }
 
