@@ -47,7 +47,7 @@
                     <a href=""><img src="" alt=""></a>
                 </div>
                 <div class="tile-footer">
-                    <p id="tile-title"></p>
+                    <p class="title" id="tile-title"></p>
                     <!-- <button class="btnFavoris" onclick=""><i id="" class="fa fa-heart-o"></i></button> -->
                     <i onclick="alert('ett')" id=""></i></a>
                 </div>

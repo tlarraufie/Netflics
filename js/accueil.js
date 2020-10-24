@@ -8,8 +8,32 @@ window.onload=() => {
 }
 
 function search(){
-    var text = document.getElementById("search-bar").value;
-    document.getElementById("search-output").innerHTML=text;
+  
+    var input = document.getElementById("search-bar");  //Récupération de l'input 
+    var filter = input.value.toUpperCase(); //filtre de recherche
+    console.log(filter);
+
+    var filmsContainer, films, tileFooter, tileTitle, i, txtValue;
+
+    //on récupère les instances de la collection de films
+    filmsContainer = document.getElementById("tile-container");
+    films = filmsContainer.getElementsByClassName("tile");
+    // console.log(films);
+
+    //Boucle à travers tout les films, et cache ceux qui ne match pas avec la recherche
+    for (i = 0; i < films.length; i++) {
+        tileFooter = films[i].getElementsByTagName('div')[1]; // on récupère le footer de la brique film  
+        tileTitle = tileFooter.getElementsByClassName("title")[0]; //on récupère l'élément qui contient le titre du film
+    
+        if (tileTitle) {
+            txtValue = tileTitle.textContent || tileTitle.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                films[i].style.display = "";
+            } else {
+                films[i].style.display = "none";
+            }
+        }
+    }
 }
 
 //Appel l'api pour récupérer la liste des favoris et les stock dans un tableau
@@ -110,12 +134,9 @@ function FillData(data){
                     icon.setAttribute("class", "press"); 
                 }
             }
-
-            // On récupère l'emplacement ou on veut insérer le template
-            var tempBody = document.querySelector("#tile-container");
             
             //On ajoute notre item dans l'élément
-            tempBody.appendChild(clone);
+            box.appendChild(clone);
             
         }
         

@@ -1,12 +1,15 @@
 <!-- NAVBAR SECTION -->
 <nav id="navbar-left">
     <?php 
-        echo "<div class='user'><h2>$user</h2></div>";
+        if($_SESSION['username'] != null){
+            echo "<div class='user'><h2>Bonjour $user !</h2></div>";
+        }
+        
         
     ?>
     
     <div class="search">
-        <input onkeydown="search()" type="text" id="search-bar" placeholder="search...">
+        <input onkeyup="search()" type="text" id="search-bar" placeholder="search...">
     </div>
     <h1 id="test"></h1>
     

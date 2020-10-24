@@ -20,7 +20,22 @@ img{
    
 }
 
+#titre{
+   font-size: 50px;
+}
+
 p{
    margin-top:1rem;
    display: flex;
+   font-size:20px;
+}
+
+.btn-retour{
+   margin-top:4rem;
+   background-color:gold;
+   padding: 20px;
+   border-radius:20px;
+   border: solid black;
+   font-weight: 800;
+   cursor: pointer;
 }

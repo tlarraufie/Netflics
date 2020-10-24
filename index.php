@@ -1,6 +1,7 @@
 <?php
 //initialisation des paramètres du site
 require_once('./config.php');
+require_once('./install.php');
 
 
 

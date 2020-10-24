@@ -41,40 +41,42 @@ INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Y
 INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Tenet','Christopher Nolan',null,'02:30:00', '2020-08-26', '/images/tenet.jpg');
 INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Gladiator','Ridley Scott',null,'02:35:00', '2000-08-20', '/images/gladiator.jpg');
 
-INSERT INTO Users (nom, prenom,username, password, age) VALUES ("Larraufie","Tom","Tomy","123",20);
-INSERT INTO Users (nom, prenom,username, password, age) VALUES ("Amouret","Robin","Rob","1234",21);
-INSERT INTO Users (nom, prenom,username,password, age) VALUES ("Zhou","Kevin","Xx_Jean-KevinDarkLolMaster_xX","123",23);
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Le Seigneur des Anneaux : Les Deux Tours','Peter Jackson','Warner Bros','02:59:00', '2002-12-18', '/images/LOTR2.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Le Seigneur des Anneaux : Le Retour du Roi','Peter Jackson','Warner Bros','03:21:00', '2003-12-17', '/images/LOTR3.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Matrix Reloaded','Lana Wachowski  Lilly Wachowski','Warner Bros','02:18:00', '2003-05-16', '/images/matrix2.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Matrix Revolutions','Lana Wachowski  Lilly Wachowski','Warner Bros','02:08:00', '2003-11-05', '/images/matrix3.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Pirates Des Caraïbes : La Malédiction du Black Pearl', 'Gore Verbinski', 'Buena Vista International','02:23:00', '2003-08-13', '/images/PDC1.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Pirates Des Caraïbes : Le Secret du Coffre Maudit', 'Gore Verbinski', 'Buena Vista International','02:31:00', '2006-08-02', '/images/PDC2.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Pirates Des Caraïbes : Jusqu"au bout du Monde', 'Gore Verbinski', 'Buena Vista International', '02:49:00', '2007-05-23', '/images/PDC3.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Pirates Des Caraïbes : La Fontaine de Jouvence', 'Rob Marshall', 'The Walt Disney Company France', '02:16:00', '2011-05-18', '/images/PDC4.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Pirates Des Caraïbes : La Vengeance de Salazar', 'Joachim Rønning  Espen Sandberg', 'The Walt Disney Company France', '02:09:00', '2017-05-24','/images/PDC5.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode I - La Menace Fantôme', 'George Lucas', 'UFD', '02:13:00', '1999-10-13', '/images/SW1.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode II - L"attaque des Clones', 'George Lucas', 'UFD', '02:22:00', '2002-05-17', '/images/SW2.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode III - La Revanche des Sith', 'George Lucas', '20th Century Fox', '02:20:00', '2005-05-18', '/images/SW3.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode IV - Un Nouvel Espoir', 'George Lucas', null, '02:01:00', '1997-03-12', '/images/SW4.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode V - L"Empire contre attaque', 'George Lucas', null, '02:22:00', '1980-08-20', '/images/SW5.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode VI - Le Retour du Jedi', 'George Lucas', null, '02:13:00', '1997-04-23', '/images/SW6.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars - Le Réveil de la Force', 'J.J Abrams', 'The Walt Disney Company France', '02:15:00', '2015-12-16', '/images/SW7.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars - Les Derniers Jedi', 'Rian Johnson', 'The Walt Disney Company France', '02:32:00', '2017-12-13', '/images/SW8.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars - Le Réveil de la Force', 'J.J Abrams', 'The Walt Disney Company France', '02:22:00', '2019-12-18', '/images/SW9.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Blade Runner', 'Ridley Scott', 'Warner Bros', '01:57:00', '1982-09-15', '/images/BladeRunner.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Blade Runner 2049', 'Denis Villeneuve', 'Sony Pictures', '02:44:00', '2017-10-04', '/images/BladeRunner2049.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Fight Club', 'David Fincher', 'Splendor Films', '02:19:00', '1999-11-10', '/images/FightClub.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Tron L"héritage', 'Joseph Kosinski', 'Walt Disney', '02:06:00', '2011-02-09', '/images/Tron.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Zodiac', 'David Fincher', 'Warner Bros', '02:36:00', '2007-05-17', '/images/Zodiac.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Titanic', 'James Cameron', 'UFD', '03:14:00', '1998-01-07', '/images/Titanic.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Inglorious Basterds', 'Quentin Tarantino', 'Universal Pictures', '02:33:00', '2009-08-19', '/images/IngloriousBasterds.jpg');
+INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('2001 : L"Odyssée de L"Espace', 'Stanley Kubrick', 'Warner Bros', '02:21:00', '1968-09-27', '/images/2001.jpg');
 
-INSERT INTO Listes (idUser,idFilm,date) VALUES (1,1,"01/01/01");
-INSERT INTO Listes (idUser,idFilm,date) VALUES (2,1,"05/09/01");
-INSERT INTO Listes (idUser,idFilm,date) VALUES (1,3,"04/01/01");
-INSERT INTO Listes (idUser,idFilm,date) VALUES (1,5,"12/08/01");
-INSERT INTO Listes (idUser,idFilm,date) VALUES (1,9,"05/03/01");
 
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Le Seigneur des Anneaux : Les Deux Tours','Peter Jackson','Warner Bros','02:59:00', '2002-12-18', '/images/LOTR2.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Le Seigneur des Anneaux : Le Retour du Roi','Peter Jackson','Warner Bros','03:21:00', '2003-12-17', '/images/LOTR3.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Matrix Reloaded','Lana Wachowski  Lilly Wachowski','Warner Bros','02:18:00', '2003-05-16', '/images/matrix2.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Matrix Revolutions','Lana Wachowski  Lilly Wachowski','Warner Bros','02:08:00', '2003-11-05', '/images/matrix3.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Pirates Des Caraïbes : La Malédiction du Black Pearl', 'Gore Verbinski', 'Buena Vista International','02:23:00', '2003-08-13', '/images/PDC1.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Pirates Des Caraïbes : Le Secret du Coffre Maudit', 'Gore Verbinski', 'Buena Vista International','02:31:00', '2006-08-02', '/images/PDC2.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Pirates Des Caraïbes : Jusqu'au bout du Monde', 'Gore Verbinski', 'Buena Vista International', '02:49:00', '2007-05-23', '/images/PDC3.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Pirates Des Caraïbes : La Fontaine de Jouvence', 'Rob Marshall', 'The Walt Disney Company France', '02:16:00', '2011-05-18', '/images/PDC4.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Pirates Des Caraïbes : La Vengeance de Salazar', 'Joachim Rønning  Espen Sandberg', 'The Walt Disney Company France', '02:09:00', '2017-05-24', '/images/PDC5.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode I - La Menace Fantôme', 'George Lucas', 'UFD', '02:13:00', '1999-10-13', '/images/SW1.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode II - L'attaque des Clones', 'George Lucas', 'UFD', '02:22:00', '2002-05-17', '/images/SW2.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode III - La Revanche des Sith', 'George Lucas', '20th Century Fox', '02:20:00', '2005-05-18', '/images/SW3.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode IV - Un Nouvel Espoir', 'George Lucas', null, '02:01:00', '1997-03-12', '/images/SW4.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode V - L'Empire contre attaque', 'George Lucas', null, '02:22:00', '1980-08-20', '/images/SW5.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars : Episode VI - Le Retour du Jedi', 'George Lucas', null, '02:13:00', '1997-04-23', '/images/SW6.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars - Le Réveil de la Force', 'J.J Abrams', 'The Walt Disney Company France', '02:15:00', '2015-12-16', '/images/SW7.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars - Les Derniers Jedi', 'Rian Johnson', 'The Walt Disney Company France', '02:32:00', '2017-12-13', '/images/SW8.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Star Wars - Le Réveil de la Force', 'J.J Abrams', 'The Walt Disney Company France', '02:22:00', '2019-12-18', '/images/SW9.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Blade Runner', 'Ridley Scott', 'Warner Bros', '01:57:00', '1982-09-15', '/images/BladeRunner.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Blade Runner 2049', 'Denis Villeneuve', 'Sony Pictures', '02:44:00', '2017-10-04', '/images/BladeRunner2049.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Fight Club', 'David Fincher', 'Splendor Films', '02:19:00', '1999-11-10', '/images/FightClub.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Tron L'héritage', 'Joseph Kosinski', 'Walt Disney', '02:06:00', '2011-02-09', '/images/Tron.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Zodiac', 'David Fincher', 'Warner Bros', '02:36:00', '2007-05-17', '/images/Zodiac.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Titanic', 'James Cameron', 'UFD', '03:14:00', '1998-01-07', '/images/Titanic.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('Inglorious Basterds', 'Quentin Tarantino', 'Universal Pictures', '02:33:00', '2009-08-19', '/images/IngloriousBasterds.jpg');
--- INSERT INTO Films (titre, auteur, distributeur, duree, date, affiche) VALUES ('2001 : L'Odyssée de L'Espace', 'Stanley Kubrick', 'Warner Bros', '02:21:00', '1968-09-27', '/images/2001.jpg');
+-- INSERT INTO Users (nom, prenom,username, password, age) VALUES ("Larraufie","Tom","Tomy","123",20);
+-- INSERT INTO Users (nom, prenom,username, password, age) VALUES ("Amouret","Robin","Rob","1234",21);
+-- INSERT INTO Users (nom, prenom,username,password, age) VALUES ("Zhou","Kevin","Xx_Jean-KevinDarkLolMaster_xX","123",23);
+
+-- INSERT INTO Listes (idUser,idFilm,date) VALUES (1,1,"01/01/01");
+-- INSERT INTO Listes (idUser,idFilm,date) VALUES (2,1,"05/09/01");
+-- INSERT INTO Listes (idUser,idFilm,date) VALUES (1,3,"04/01/01");
+-- INSERT INTO Listes (idUser,idFilm,date) VALUES (1,5,"12/08/01");
+-- INSERT INTO Listes (idUser,idFilm,date) VALUES (1,9,"05/03/01");
+
 

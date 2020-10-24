@@ -26,7 +26,7 @@ if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['age'])&& iss
          // $requete = "SELECT count(*) FROM Users where 
          // prenom = '".$username."' and password = '".$password."' ";
 
-         $requete="INSERT INTO Users (nom,prenom,username,password,age) VALUES ('".$nom."','".$prenom."','".$username."','".$password."',$age);";
+         $requete="INSERT INTO Users (nom,prenom,username,password,age) VALUES ('".$nom."','".$prenom."','".$username."','".md5($password)."',$age);";
          $sth=$dbh->prepare($requete);
          $sth->execute();
          echo 'HELLO';

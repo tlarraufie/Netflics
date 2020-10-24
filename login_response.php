@@ -8,8 +8,7 @@ session_start();
 if(isset($_POST['username']) && isset($_POST['password']))
 {
     
-    
-      
+
     //On récupère les deux variables du form
     $username = $_POST['username']; 
     $password = $_POST['password']; 
@@ -28,12 +27,10 @@ if(isset($_POST['username']) && isset($_POST['password']))
 
          // $count =  $response[0]["count(*)"];
          $requete = "SELECT * FROM Users where 
-         username = '".$username."' and password = '".$password."' ";
+         username = '".$username."' and password = '".md5($password)."' ";
          $sth=$dbh->prepare($requete);
          $sth->execute();
          $response= $sth->fetchAll();
-
-
 
       }catch (Exception $e){
          echo '<pre>';

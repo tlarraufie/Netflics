@@ -50,16 +50,15 @@
         
         <div class="content-info">
             <h1 id="titre"></h1>
+            <hr>
             <p id="auteur"></p>
             <p id="distributeur"></p>
             <p id="duree"></p>
             <p id="date"></p>
-        </div>
+
+            <a href="index.php"><button class="btn-retour">RETOUR</button></a>
+        </div> 
     </div>
-
-    
-    
-
 
     <!-- END SECTION -->
 </main>
