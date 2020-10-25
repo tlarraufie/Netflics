@@ -64,6 +64,12 @@
     </main>
 
 <script src="https://kit.fontawesome.com/yourcode.js"></script>
+
+
+<script type="text/javascript">
+    var session = '<?php echo $_SESSION['username']; ?>';
+            
+</script>
 <script type="text/javascript" src="js/accueil.js"></script>
 
 </body>

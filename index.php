@@ -1,8 +1,6 @@
 <?php
 //initialisation des paramètres du site
-require_once('./config.php');
-require_once('./install.php');
-
+require_once('database/install.php');
 
 
 //vérification de la page

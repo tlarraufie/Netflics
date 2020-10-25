@@ -142,12 +142,21 @@ function FillData(data){
             // var button = clone.querySelector("button");
             // button.setAttribute("onclick", "toggleFavoris("+data[object]["idFilm"]+")");
             
-            //Remplissage de l'icon 
-            var icon = clone.querySelector("i");
-            icon.setAttribute("onclick", "toggleFavoris("+data[object]["idFilm"]+")");
-            icon.setAttribute("id", data[object]["idFilm"]);
 
-            
+            //Remplissage de l'icon si un utilisateur est connecté
+            //Sinon supprime les coeurs
+            if(session){
+                var icon = clone.querySelector("i");
+                icon.setAttribute("onclick", "toggleFavoris("+data[object]["idFilm"]+")");
+                icon.setAttribute("id", data[object]["idFilm"]);
+            }else{
+                var elem = clone.querySelector(".tile-footer");
+                var child = clone.querySelector("i");
+                elem.removeChild(child);
+                
+            }
+         
+
             for(var i= 0; i < tFav.length; i++)
             {
                 if(tFav[i] === data[object]["idFilm"]){
