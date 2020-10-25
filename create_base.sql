@@ -19,8 +19,7 @@ CREATE TABLE 'Users' (
 
 CREATE TABLE 'Listes' (
     'idUser' INTEGER NOT NULL,
-    'idFilm' INTEGER NOT NULL,
-    'date' TEXT NOT NULL
+    'idFilm' INTEGER NOT NULL
 
     -- CONSTRAINT PK_Listes PRIMARY KEY ('idUser','idFilm'),
 

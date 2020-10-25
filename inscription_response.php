@@ -20,33 +20,29 @@ if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['age'])&& iss
     if($nom !== "" && $prenom !== "")
     {
 
-      echo 'HELLO';
       try{
-         //requête SQL avec le user et le mot de passe
-         // $requete = "SELECT count(*) FROM Users where 
-         // prenom = '".$username."' and password = '".$password."' ";
 
-         $requete="INSERT INTO Users (nom,prenom,username,password,age) VALUES ('".$nom."','".$prenom."','".$username."','".md5($password)."',$age);";
+         $requete="INSERT INTO Users (nom,prenom,username,password,age) VALUES (:nom,:prenom,:username,:mdp,:age);";
          $sth=$dbh->prepare($requete);
-         $sth->execute();
-         echo 'HELLO';
+         $sth->execute(array(':nom' => $nom, ':prenom' => $prenom, ':username' => $username, ':mdp' => md5($password), ':age' => $age));
+        
 
       }catch (Exception $e){
          echo '<pre>';
          var_dump($e);
       }
 
-      header('Location: inscription.php?info=1'); // utilisateur ou mot de passe vide      
+      header('Location: index.php?page=login'); // connexion reussi     
       
     }
     else
     {
-       header('Location: inscription.php?erreur=2'); // utilisateur ou mot de passe vide
+       header('Location: index.php?page=inscription&erreur=2'); // utilisateur ou mot de passe vide
     }
 }
 else
 {
-   header('Location: inscription.php');
+   header('Location: index.php?page=inscription');
 }
-// mysqli_close($db); // fermer la connexion
+
 ?>

@@ -2,6 +2,10 @@
     require_once '../connect.php';
     
 
+    // $sql = 'SELECT * FROM characters WHERE id = :id';
+    //         $sth = $dbh->prepare( $sql );
+    //         $sth->execute(array(':id' => $_GET['api_params'][0]));
+    //         $data = $sth->fetchAll(PDO::FETCH_OBJ);
     function getAllFilms($dbh){
 
         try{
@@ -22,9 +26,9 @@
         
         try{
             //$sql = "SELECT * FROM Listes WHERE idUser = '".$_SESSION['idUser']."' ";
-            $sql = "SELECT * FROM Listes L JOIN Films F ON L.idFilm = F.idFilm WHERE idUser = '".$_SESSION['idUser']."' ";
+            $sql = 'SELECT * FROM Listes L JOIN Films F ON L.idFilm = F.idFilm WHERE idUser = :id ';
             $sth = $dbh->prepare( $sql );
-            $sth->execute();
+            $sth->execute(array(':id' => $_SESSION['idUser']));
             $data = $sth->fetchAll(PDO::FETCH_OBJ);
 
             return $data;
@@ -38,10 +42,9 @@
     function addFavoris($dbh,$idFilm){
         //Vérification de l'absence de la ligne dans la base avant ajout
         try{
-            $requete = "SELECT * FROM Listes where 
-            idUser = '".$_SESSION['idUser']."' AND idFilm = '".$idFilm."' ";
+            $requete = "SELECT * FROM Listes where idUser = :idUser AND idFilm = :idFilm";
             $sth=$dbh->prepare($requete);
-            $sth->execute();
+            $sth->execute(array(':idUser' => $_SESSION['idUser'], ':idFilm' => $idFilm));
             $response= $sth->fetchAll();
         }catch (Exception $e){
         echo '<pre>';
@@ -51,9 +54,9 @@
         if($response == null){
             try{
                 
-                $sql = "INSERT INTO Listes (idUser,idFilm,date) VALUES ('".$_SESSION['idUser']."','".$idFilm."','04/09/01');";
+                $sql = "INSERT INTO Listes (idUser,idFilm) VALUES (:idUser,:idFilm);";
                 $sth = $dbh->prepare( $sql );
-                $sth->execute();
+                $sth->execute(array(':idUser' => $_SESSION['idUser'], ':idFilm' => $idFilm));
 
                 $data = "ADD REUSSI".$idFilm;
                 
@@ -71,9 +74,9 @@
     function removeFavoris($dbh,$idFilm){
 
         try{          
-            $sql = "DELETE FROM Listes WHERE idUser = '".$_SESSION['idUser']."' AND idFilm = '".$idFilm."'";
+            $sql = "DELETE FROM Listes WHERE idUser = :idUser AND idFilm = :idFilm";
             $sth = $dbh->prepare( $sql );
-            $sth->execute(); 
+            $sth->execute(array(':idUser' => $_SESSION['idUser'], ':idFilm' => $idFilm)); 
             
             $data = "REMOVE REUSSI".$idFilm;
         }

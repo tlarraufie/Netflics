@@ -18,29 +18,17 @@ if(isset($_POST['username']) && isset($_POST['password']))
 
      
       try{
-         //requête SQL avec le user et le mot de passe
-         // $requete = "SELECT count(*) FROM Users where 
-         // username = '".$username."' and password = '".$password."' ";
-         // $sth=$dbh->prepare($requete);
-         // $sth->execute();
-         // $response= $sth->fetchAll();
 
-         // $count =  $response[0]["count(*)"];
-         $requete = "SELECT * FROM Users where 
-         username = '".$username."' and password = '".md5($password)."' ";
+         $requete = "SELECT * FROM Users where username = :username and password = :mdp ";
          $sth=$dbh->prepare($requete);
-         $sth->execute();
+         $sth->execute(array(':username' => $username, ':mdp' => md5($password)));
          $response= $sth->fetchAll();
 
       }catch (Exception $e){
          echo '<pre>';
          var_dump($e);
       }
-
-     
-
-     
-      
+ 
       if($response[0]!=null) // nom d'utilisateur et mot de passe correctes
       {
          //Une ligne est trouvée, on récupère les données de l'utilisateur
@@ -50,33 +38,22 @@ if(isset($_POST['username']) && isset($_POST['password']))
          $_SESSION['age'] =$response[0]["username"];
          $_SESSION['username'] = $username;
 
-         header('Location: index.php');
+         header('Location: index.php?page=accueil');
    
       }
       else
       {
-         header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
+         header('Location: index.php?page=login&erreur=1'); // utilisateur ou mot de passe incorrect
       }
-      
-         
-      // if($count!=0) // nom d'utilisateur et mot de passe correctes
-      // {
-      //    $_SESSION['username'] = $username;
-      //    header('Location: index.php');
-      // }
-      // else
-      // {
-      //    header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
-      // }
     }
     else
     {
-       header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide
+       header('Location: index.php?page=login&erreur=2'); // utilisateur ou mot de passe vide
     }
 }
 else
 {
-   header('Location: login.php');
+   header('Location: index.php?page=login');
 }
 // mysqli_close($db); // fermer la connexion
 ?>

@@ -16,10 +16,10 @@
     <?php 
         if($_SESSION['username'] != null){
             echo '<button class="btn btn-fav" onclick=getFavoris()>Ma Liste</button>';
-            echo '<button class="btn btn-news" onclick=getAllFilms()>Nouveautés</button>';
-        }else{
-            echo '<button class="btn btn-news" onclick=getAllFilms()>Nouveautés</button>';
         }
+        
+        echo '<button class="btn btn-news" onclick=getAllFilms()>Découvrir</button>';
+        
     
     ?>
 

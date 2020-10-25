@@ -9,17 +9,7 @@
 <body>
     <!-- HEADER SECTION-->
 
-    <header id="header">
-        <h1 id="title">
-            <a href="index.php">NETFLICS</a>
-        </h1>
-        <nav id="navbar-top">          
-            <ul>
-                <li><a class="nav-link" href="inscription.php">S'inscrire</a></li>
-                <li><a class="nav-link" href="login.php">Se connecter</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include_once 'components/header.php'; ?>
     
     <!-- END HEADER SECTION -->
 
@@ -65,9 +55,7 @@
                     if($err==1 || $err==2)
                         echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
                 }
-                else if(isset($_GET['info'])){
-                    echo "<p style='color:cyan'>Inscription réussi</p>";
-                }
+                
             ?>
         </form>
     </div>

@@ -13,7 +13,7 @@ if(isset($_GET['page']))
 
   if(!is_file("./".$_GET['page'].".php"))
   { 
-    $page = '404'; //page demandée inexistante
+    $page = 'erreur'; //page demandée inexistante
   }
 }
 else
