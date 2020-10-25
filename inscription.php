@@ -17,19 +17,20 @@
         <!-- zone de connexion -->
         
         <form class="formulaire" action="inscription_response.php" method="POST">
-            <div class="form-header">
-                <h1>Inscription</h1>
-            </div>
-            
-            
+
             <div class="form-fields">
+                <div class="form-header">
+                    <h1>Inscription</h1>
+                </div>
+                <hr>
+
                 <div class="form-group">
                     <label><b>Nom</b></label>
-                    <input type="text" placeholder="Entrer votre nom" name="nom" required>
+                    <input type="text" name="nom" required>
                 </div>
                 <div class="form-group">
                     <label><b>Prénom</b></label>
-                    <input type="text" placeholder="Entrer votre prénom" name="prenom" required>
+                    <input type="text" name="prenom" required>
                 </div>
                 <div class="form-group">
                     <label><b>Age</b></label>
@@ -37,17 +38,36 @@
                 </div>
                 <div class="form-group">
                     <label><b>Nom d'utilisateur</b></label>
-                    <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
+                    <input type="text" name="username" required>
                 </div>
 
                 <div class="form-group">
                     <label><b>Mot de passe</b></label>
-                    <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+                    <input type="password" name="password" required>
                 </div>
+
+                <div class="form-footer">
+                    <input type="submit" id='submit' value='INSCRIPTION' >
+                </div>
+
+                <?php
+                    if(isset($_GET['erreur'])){
+                        $err = $_GET['erreur'];
+                        if($err==1 || $err==2){
+                            echo "<div class='form-erreur'><p>Vous devez rentrer tout les champs</p></div>";
+                        }elseif($err == 3){
+                            echo "<div class='form-erreur'><p>Nom d'utilisateur déjà pris !</p></div>";
+                        }
+                            
+                    }elseif(isset($_GET['info'])){
+                        $err = $_GET['info'];
+                        if($err==1){
+                            echo "<div class='form-info'><p>Inscription réussi !  <a href='index.php?page=login'>Connexion</a> </p></div>";
+                        }
+                    }
+                ?>
             </div>
-            <div class="form-footer">
-                <input type="submit" id='submit' value='INSCRIPTION' >
-            </div>
+            
             
             <?php
                 if(isset($_GET['erreur'])){

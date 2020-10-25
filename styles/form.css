@@ -66,6 +66,7 @@ nav#navbar-top ul li{
 }
 
 nav#navbar-top ul li a{
+    font-size:20px;
 	color:white;
 }
 
@@ -101,55 +102,92 @@ nav#navbar-top ul li a{
 
 .formulaire{
     /* background-color:red; */
-    background-color:hsl(240,50%,55%);
+    background-color:hsl(240,100%,100%);
     width:30%;
+    border-radius:10px;
     
    
 }
 
 .form-header{
-    background-color:hsl(240,50%,35%);
-    box-shadow: 0px 3px 10px 5px hsl(0,10%,10%);
-    padding:3rem 2rem;
+    color:black;
+    /* background-color:hsl(240,50%,35%); */
+    padding:2rem 1rem;
     text-align: center;
 }
 
 .form-fields{
-    padding:0rem 1rem;
+    padding:0rem 2rem;
+    color:hsl(0,0%,40%);
 }
 .form-fields input{
     padding:1rem;
+    border:solid hsl(0,0%,70%) 1px;
+    border-radius:5px;
     
 }
-.form-fields input:hover{
-    box-shadow: 1px 1px 10px 1px hsl(0,20%,10%);
-}
+
 
 .form-fields input:focus{
-    box-shadow: 1px 1px 10px 1px hsl(0,20%,10%);
+    box-shadow: 0px 0px 1px 1px hsl(0,20%,10%);
 }
 
 
 .form-group{
     display: flex;
     flex-direction: column;
-    margin: 2rem auto;
+    margin: .5rem auto;
 
 }
 
 .form-footer{
+    display: flex;
     text-align: center;
+    justify-content: center;
 }
+
+.form-erreur{
+    border:solid hsl(0, 100%, 50%) 1px;
+    border-radius:5px;
+    background-color:hsl(0, 100%, 90%);
+    color:hsl(0, 100%, 50%);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+}
+
+.form-info{
+    border:solid hsl(135, 70%, 50%) 1px;
+    border-radius:5px;
+    background-color:hsl(135, 100%, 90%);
+    color:hsl(135, 70%, 50%);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+}
+.form-info a{
+   color:blue;
+
+}
+
 #submit{
-    background: linear-gradient(45deg, rgba(14,255,0,1) 20%, rgba(13,147,3,1) 78%);
+    background-color:hsl(109, 75%, 58%);
     width:100%;
-    padding:1rem;
-    border-radius: 3px;
-    border:none;
+    padding:1.5rem;
+    border-radius: 5px;
+    margin: 2rem auto;
+    color: white;
+    font-weight: 800;
+    font-size: large;
 }
 
 #submit:hover{
-    background: linear-gradient(45deg, rgba(13,147,3,1) 20%, rgba(14,255,0,1) 78%);
+    background-color:hsl(109, 75%, 50%);
+   
 
 }
 

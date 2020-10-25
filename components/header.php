@@ -10,8 +10,8 @@
                 if($_SESSION['username'] != null){
                     echo '<li><a class="nav-link" href="index.php?deconnexion=true">Deconnexion</a></li>';
                 }else{
-                    echo '<li><a class="nav-link" href="index.php?page=inscription">Register</a></li>';
-                    echo '<li><a class="nav-link" href="index.php?page=login">Login</a></li>';
+                    echo '<li><a class="nav-link" href="index.php?page=inscription">Inscription</a></li>';
+                    echo '<li><a class="nav-link" href="index.php?page=login">Connexion</a></li>';
                 }
             
             ?>
