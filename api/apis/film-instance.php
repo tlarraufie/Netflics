@@ -1,6 +1,7 @@
 <?php
     require_once '../connect.php';
 
+    //Récupère une instance de la collection films avec l'id du film en paramètre
     function getFilm($dbh){
         try{
             $sql = 'SELECT * FROM Films WHERE idFilm = :id';

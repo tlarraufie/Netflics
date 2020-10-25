@@ -1,24 +1,15 @@
 <?php
 
 session_start();
-/**
- * Point d'entrée unique de notre application
- * C'est ce script PHP qui décide quel autre script PHP sera appelé en fonction
- */
+
 
 // Ici la liste de vos APIs et de leurs scripts associés
 $apis = [
-    // "useless" => "apis/useless-list.php",
-    // "useless/(\d+)" => "apis/useless-instance.php",
-    // "characters"=>"apis/characters.php",
-    // "characters/(\d+)"=>"apis/characters-instance.php",
+
     "films"=>"apis/films.php",
     "films/(\d+)" => "apis/film-instance.php"
 ];
 
-/**
- * VOUS NE DEVRIREZ PAS AVOIR À MODIFIER LE CODE PLUS BAS
- */
 
 // En l'absence d'API clairement demandée : 404
 if(empty($_GET['url'])) {

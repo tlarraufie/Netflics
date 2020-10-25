@@ -1,4 +1,5 @@
 window.onload=() => {
+    
     idFilm = document.querySelector("img").getAttribute("id"); 
     console.log(idFilm);  
 
@@ -10,6 +11,9 @@ function search(){
     document.getElementById("search-output").innerHTML=text;
 }
 
+/**
+ * La fonction permet de récupérer un film et l'ensemble de ces informations dans la collections des films
+ */
 function getFilmInfo(){
     var apiUrl = 'http://netflics.com/api/films/'+idFilm;
     console.log(apiUrl);
@@ -24,6 +28,11 @@ function getFilmInfo(){
 }
 
 
+/**
+ * Fonction qui permet de remplir les element HTML de la vue avec les elements reçu dynamiquement depuis la BDD
+ * 
+ * @param {*} data  récupère les données reçu par la requete
+ */
 function FillData(data){
     console.log(data[0]["titre"]);
     console.log(data[0]["affiche"]);
@@ -34,15 +43,19 @@ function FillData(data){
     titre = document.getElementById("titre");
     titre.innerHTML= data[0]["titre"];
     
+    //remplissage de l'élément auteur
     auteur = document.getElementById("auteur");
     auteur.innerHTML= "<strong>auteur: </strong>&nbsp;"+data[0]["auteur"];
 
+    //remplissage de l'élément distributeur
     distributeur = document.getElementById("distributeur");
     distributeur.innerHTML= "<strong>distributeur: </strong>&nbsp;"+data[0]["distributeur"];
 
+    //remplissage de l'élément duree
     duree = document.getElementById("duree");
     duree.innerHTML= "<strong>durée: </strong>&nbsp;"+data[0]["duree"];
 
+    //remplissage de l'élément date
     date = document.getElementById("date");
     date.innerHTML= "<strong>date:</strong>&nbsp;"+data[0]["date"];
 }

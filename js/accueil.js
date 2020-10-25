@@ -1,4 +1,6 @@
-var tFav= [];
+
+
+var tFav= []; //Déclaration du tableau qui va contenir les films favoris de l'utilisateur connecté
 
 window.onload=() => {
 
@@ -7,13 +9,16 @@ window.onload=() => {
         
 }
 
+/**
+ * Fonction de recherche, affiche les films qui match avec la valeur entré dans la recherche
+ */
 function search(){
   
     var input = document.getElementById("search-bar");  //Récupération de l'input 
     var filter = input.value.toUpperCase(); //filtre de recherche
     console.log(filter);
 
-    var filmsContainer, films, tileFooter, tileTitle, i, txtValue;
+    var filmsContainer, films, tileFooter, tileTitle, i, txtValue; //déclaration des variables
 
     //on récupère les instances de la collection de films
     filmsContainer = document.getElementById("tile-container");
@@ -50,7 +55,7 @@ function reloadFavoris(){
         for (var object in data) {
             tFav.push(data[object]["idFilm"]);    
         }
-        console.log("RELOAD TAB FAVORIS :"+tFav);
+        // console.log("RELOAD TAB FAVORIS :"+tFav);
 
         // return data;
     }).catch(err => {
@@ -59,6 +64,9 @@ function reloadFavoris(){
 
 }
 
+/**
+ * La fonction getFavoris() permet de récupérer les films favoris de l'utilisateur avec un appel à l'api et le variable favoris à true
+ */
 function getFavoris(){
 
     var apiUrl = 'http://netflics.com/api/films?favoris=true';
@@ -72,6 +80,9 @@ function getFavoris(){
     });
 }
 
+/**
+ * La fonction getAllFilms() permet de récupérer l'ensemble des films de la collection avec un appel à l'api
+ */
 function getAllFilms(){
 
     var apiUrl = 'http://netflics.com/api/films';
@@ -87,6 +98,15 @@ function getAllFilms(){
     
 }
 
+
+/**
+ * Fonction qui permet de remplir la vue du client avec tout les films récupérés
+ * On parcour l'ensemble des films : 
+ * On clone le template de base de l'affichage d'un film
+ * et on insère les données dans les bonnes balises et Tags
+ * 
+ * @param {*} data récupère les données récupérées par la requête API
+ */
 function FillData(data){
 
     if (document.createElement("template").content) {
@@ -146,6 +166,11 @@ function FillData(data){
     }
 }
 
+/**
+ * Fonction qui permet d'ajouter un film dans la liste de favoris de l'utilisateur
+ * 
+ * @param {*} idFilm id du film que l'on souhaite ajouter
+ */
 function addFavoris(idFilm){
     
     console.log("addFavoris(): IdFilm = " + idFilm);
@@ -167,6 +192,11 @@ function addFavoris(idFilm){
 
 }
 
+/**
+ * Fonction qui permet de retirer un film dans la liste de favoris de l'utilisateur
+ * 
+ * @param {*} idFilm id du film que l'on souhaite retirer
+ */
 function removeFavoris(idFilm){
 
     console.log("removeFavoris(): IdFilm = " + idFilm);
@@ -188,18 +218,24 @@ function removeFavoris(idFilm){
 }
 
 
-
+/**
+ * Fonction qui est appelée lors du clic sur un bouton coeur, et permet d'ajouter un film dans la liste 
+ * ou de le retirer
+ * 
+ * @param {*} idFilm id du film que l'on souhaite traiter
+ */
 function toggleFavoris(idFilm){
     
+    //ajoute ou retire la classe press qui permet le changement de couleur du coeur
     var icon = document.getElementById(idFilm);
     icon.classList.toggle("press"); // changement d'etat
 
     //Selon l'etat du bouton, on appelle ADD ou REMOVE
     if(icon.classList[0]=="press"){
-        console.log("call ADD"); 
+        // console.log("call ADD"); 
         addFavoris(idFilm);   
     }else{
-        console.log("call REMOVE");
+        // console.log("call REMOVE");
         removeFavoris(idFilm);
     }
 
@@ -207,37 +243,3 @@ function toggleFavoris(idFilm){
         
 }
 
-// function getFavoris(){
-//     var apiUrl = 'http://netflics.com/api/films?favoris=true';
-// }
-// function getAllFilms(){
-//     var apiUrl = 'http://netflics.com/api/films';
-//     fetch(apiUrl).then(response => {
-//         return response.json();
-//     }).then(data => {
-
-//         // Work with JSON data here 
-//         document.getElementById("tile-container").innerHTML=""; 
-//         for (var object in data) {   
-            
-//             document.getElementById("tile-container")
-//                 .innerHTML+=
-//                 `
-//                 <div class="tile">
-//                     <div class="tile-content">
-//                         <img src="${data[object]["affiche"]}" alt="affiche ${data[object]["titre"]}">
-//                     </div>
-//                     <div class="tile-footer">
-//                         <p>${data[object]["titre"]}</p>
-//                         <button class="btnFavoris" onclick="toggleFavoris(${data[object]["idFilm"]})" "><i id="${data[object]["idFilm"]}" class="fa fa-heart-o"></i></button>
-//                         <p id="testp"></p>
-//                     </div>
-//                 </div>
-//                 `;    
-                
-//         }
-//         return resultat;
-//         }).catch(err => {
-//         // Do something for an error here
-//     });
-// }

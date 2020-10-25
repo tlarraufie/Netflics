@@ -1,4 +1,5 @@
-<!-- NAVBAR SECTION -->
+<!-- Component leftBAR qui est composé du bandeau de droite avec la barre de recherche et les boutons de favoris et de nouveautés -->
+
 <nav id="navbar-left">
     <?php 
         if($_SESSION['username'] != null){

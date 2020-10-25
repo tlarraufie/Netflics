@@ -2,10 +2,9 @@
     require_once '../connect.php';
     
 
-    // $sql = 'SELECT * FROM characters WHERE id = :id';
-    //         $sth = $dbh->prepare( $sql );
-    //         $sth->execute(array(':id' => $_GET['api_params'][0]));
-    //         $data = $sth->fetchAll(PDO::FETCH_OBJ);
+    /**
+     * Fonction qui retourne l'ensemble de la collection des films
+     */
     function getAllFilms($dbh){
 
         try{
@@ -22,6 +21,11 @@
         }
     }
 
+
+    /**
+     * Fonction qui retourne les films favoris de l'utilisateur qui est passé en paramètre
+     * On interroge la table Liste qui permet de retrouver les favoris de l'utilisateur
+     */
     function getAllFavoris($dbh){
         
         try{
@@ -39,6 +43,10 @@
         }
     }
 
+    
+    /**
+     * Fonction qui ajoute un film dans la liste de favoris de l'utilisateur
+     */
     function addFavoris($dbh,$idFilm){
         //Vérification de l'absence de la ligne dans la base avant ajout
         try{
@@ -51,6 +59,7 @@
         var_dump($e);
         }
 
+        //Si il n'y a pas de lignes, on peut peux effectuer l'insertion
         if($response == null){
             try{
                 
@@ -71,6 +80,10 @@
         return $data;
     }
 
+
+    /**
+     * Fonction qui retire un film des favoris de l'utilisateur
+     */
     function removeFavoris($dbh,$idFilm){
 
         try{          
@@ -123,31 +136,7 @@
             die('could not connect to database');
             display404();
         }        
-    }elseif($_SERVER["REQUEST_METHOD"]=="POST"){
-        // try {
-
-        //     if(isset($_POST['x']))
-        //     {
-        //         // $data=addFavoris($dbh);
-        //         $data = $_POST['x'];
-                
-        //     }else{
-        //         $data = "hello";
-        //     }
-
-        //     header('Content-Type: application/json');
-        //     echo json_encode($data);
-    
-        // } catch (PDOException $e) {
-        //     echo '<pre>';
-        //     var_dump($e);
-        //     die('could not connect to database');
-        //     display404();
-        // } 
-        display404();
-        
-    }
-    else{
+    }else{
         display404();
     }         
        
